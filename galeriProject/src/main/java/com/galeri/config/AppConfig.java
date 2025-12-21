@@ -1,7 +1,9 @@
 package com.galeri.config;
 
+import com.galeri.model.Galerici;
 import com.galeri.model.Kullanici;
 import com.galeri.repository.AuthRepository;
+import com.galeri.repository.GalericiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +23,9 @@ public class AppConfig {
     @Autowired
     private AuthRepository authRepository;
 
+    @Autowired
+    private GalericiRepository galericiRepository;
+
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {
@@ -28,9 +33,12 @@ public class AppConfig {
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
                 Optional<Kullanici> kullanici = authRepository.findByUsername(username);
+                Optional<Galerici> galerici = galericiRepository.findByGalericiId(username);
 
                 if(kullanici.isEmpty()){
-                    return null;
+                    if(galerici.isPresent()){
+                        return galerici.get();
+                    }
                 }
 
                 return kullanici.get();

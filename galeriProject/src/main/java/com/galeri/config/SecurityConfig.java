@@ -24,6 +24,7 @@ public class SecurityConfig{
     public static final String REGISTER = "/register";
     public static final String LOGIN = "/login";
     public static final String REFRESH_TOKEN = "/refresh-token";
+    public static final String GALERICI_LOGIN = "/galerici/giris";
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -34,6 +35,7 @@ public class SecurityConfig{
                             REGISTER,
                             LOGIN,
                             REFRESH_TOKEN,
+                            GALERICI_LOGIN,
                             "/v3/api-docs/**",
                             "/swagger-ui/**",
                             "/swagger-ui.html")
