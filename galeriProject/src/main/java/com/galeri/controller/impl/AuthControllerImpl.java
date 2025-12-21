@@ -7,6 +7,7 @@ import com.galeri.dto.DtoRefreshToken;
 import com.galeri.jwt.AuthRequest;
 import com.galeri.jwt.AuthResponse;
 import com.galeri.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class AuthControllerImpl implements AuthController {
 
     @Override
     @PostMapping(path = "/register")
-    public DtoKullanici register(@RequestBody DtoKullaniciUI dtoKullaniciUI) {
+    public DtoKullanici register(@Valid @RequestBody DtoKullaniciUI dtoKullaniciUI) {
         return authService.register(dtoKullaniciUI);
     }
 
