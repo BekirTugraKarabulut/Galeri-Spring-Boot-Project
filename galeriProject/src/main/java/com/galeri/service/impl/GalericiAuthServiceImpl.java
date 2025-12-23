@@ -19,6 +19,10 @@ public class GalericiAuthServiceImpl implements GalericiAuthService {
         dtoGalerici.setGalericiId(dtoGalericiUI.getGalericiId());
         dtoGalerici.setPassword(dtoGalericiUI.getPassword());
 
+        if(galericiRepository.findByGalericiId(dtoGalerici.getGalericiId()).isEmpty()){
+            return false;
+        }
+
         if(dtoGalerici.getGalericiId().equals("158") && dtoGalerici.getPassword().equals("123")){
             return true;
         } else {
