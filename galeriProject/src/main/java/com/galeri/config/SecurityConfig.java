@@ -44,6 +44,7 @@ public class SecurityConfig{
                             GALERICI_LOGIN,
                             GALERICI_REGISTER,
                             GALERICI_REFRESH_TOKEN,
+                            "/araclar",
                             "/kullanici/get/{username}",
                             "/v3/api-docs/**",
                             "/swagger-ui/**",
