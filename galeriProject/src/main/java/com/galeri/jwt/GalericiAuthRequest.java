@@ -1,6 +1,5 @@
-package com.galeri.dto;
+package com.galeri.jwt;
 
-import com.galeri.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,11 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DtoGalericiUI {
+public class GalericiAuthRequest {
 
     private String galericiId;
-
-    private String name;
 
     private String password;
 

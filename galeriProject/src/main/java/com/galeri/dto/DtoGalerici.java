@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DtoGalericiUI {
+public class DtoGalerici {
 
     private String galericiId;
 
