@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DtoArac {
+public class DtoAracUI {
 
     private Long aracId;
 
@@ -24,5 +24,4 @@ public class DtoArac {
     private String aracResmi;
 
     private DtoGalerici galerici;
-
 }

@@ -15,6 +15,7 @@ import java.util.List;
 public class Arac {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "arac_id")
     private Long aracId;
 
@@ -30,12 +31,12 @@ public class Arac {
     @Column(name = "fiyat")
     private String fiyat;
 
+    @Column(name = "arac_resmi")
+    private String aracResmi;
+
     @ManyToOne
     @JoinColumn(name = "galerici_id" , referencedColumnName = "galerici_id")
     private Galerici galerici;
-
-    @OneToMany(mappedBy = "arac", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<AracResmi> aracResmi;
 
     @OneToMany(mappedBy = "arac", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Favorileme> favorilemes;
