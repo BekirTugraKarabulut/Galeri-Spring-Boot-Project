@@ -44,6 +44,8 @@ public class SecurityConfig{
                             GALERICI_LOGIN,
                             GALERICI_REGISTER,
                             GALERICI_REFRESH_TOKEN,
+                            "/upload/image",
+                            "/uploads/**",
                             "/araclar",
                             "/arac-ekle",
                             "/kullanici/get/{username}",
