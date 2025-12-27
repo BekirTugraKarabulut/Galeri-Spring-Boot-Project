@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "randevu",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"randevu_tarihi", "randevu_saati", "arac_id"})
+                @UniqueConstraint(columnNames = {"randevu_tarihi", "randevu_saati", "galerici_id"})
         }
 )
 @Data
@@ -37,8 +37,7 @@ public class Randevu {
     private Kullanici kullanici;
 
     @ManyToOne
-    @JoinColumn(name = "arac_id", referencedColumnName = "arac_id")
-    private Arac arac;
-
+    @JoinColumn(name = "galerici_id", referencedColumnName = "galerici_id")
+    private Galerici galerici;
 
 }

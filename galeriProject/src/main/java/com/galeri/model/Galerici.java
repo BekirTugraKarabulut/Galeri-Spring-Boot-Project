@@ -38,6 +38,9 @@ public class Galerici implements UserDetails {
     @OneToMany(mappedBy = "galerici", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<RefreshTokenGalerici> refreshTokens;
 
+    @OneToMany(mappedBy = "galerici", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Randevu> randevus;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

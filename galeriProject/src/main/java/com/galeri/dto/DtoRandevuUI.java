@@ -1,0 +1,24 @@
+package com.galeri.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class DtoRandevuUI {
+
+    private Long randevuId;
+
+    private Date randevuTarihi;
+
+    private String randevuSaati;
+
+    private DtoKullanici kullanici;
+
+    private DtoGalerici galerici;
+
+}

@@ -44,6 +44,8 @@ public class SecurityConfig{
                             GALERICI_LOGIN,
                             GALERICI_REGISTER,
                             GALERICI_REFRESH_TOKEN,
+                            "/randevu/**",
+                            "/randevu/randevuAl",
                             "/upload/image",
                             "/uploads/**",
                             "/araclar",
