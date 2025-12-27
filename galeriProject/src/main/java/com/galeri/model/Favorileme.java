@@ -6,7 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "favorileme")
+@Table(name = "favorileme",
+            uniqueConstraints = {
+                 @UniqueConstraint(columnNames = {"email" , "arac_id"})
+            }
+    )
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
