@@ -5,11 +5,12 @@ import com.galeri.dto.DtoFavorileme;
 import com.galeri.dto.DtoFavorilemeUI;
 import com.galeri.service.FavorilemeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/favorileme")
 public class FavorilemeControllerImpl implements FavorilemeController {
 
     @Autowired
@@ -20,6 +21,12 @@ public class FavorilemeControllerImpl implements FavorilemeController {
     @PostMapping(path = "/favorilemeEkle")
     public DtoFavorileme favorilemeEkle(@RequestBody DtoFavorilemeUI dtoFavorilemeUI) {
         return favorilemeService.favorilemeEkle(dtoFavorilemeUI);
+    }
+
+    @Override
+    @GetMapping(path = "/kullaniciFavoriListByUsername/{username}")
+    public List<DtoFavorileme> kullaniciFavoriListByUsername(@PathVariable(name = "username" , required = true) String username) {
+        return favorilemeService.kullaniciFavoriListByUsername(username);
     }
 
 }

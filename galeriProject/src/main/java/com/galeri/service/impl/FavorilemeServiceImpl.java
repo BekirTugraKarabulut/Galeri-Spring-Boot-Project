@@ -15,6 +15,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -65,5 +67,29 @@ public class FavorilemeServiceImpl implements FavorilemeService {
         dtoFavorileme.setArac(dtoArac);
 
         return dtoFavorileme;
+    }
+
+    @Override
+    public List<DtoFavorileme> kullaniciFavoriListByUsername(String username) {
+
+        List<Favorileme> favorilemeList = favorilemeRepository.findByKullanici_Username(username);
+        List<DtoFavorileme> dtoFavorilemes = new ArrayList<>();
+
+        for(Favorileme favorileme : favorilemeList){
+            DtoFavorileme dtoFavorileme = new DtoFavorileme();
+            BeanUtils.copyProperties(favorileme, dtoFavorileme);
+
+            DtoKullanici dtoKullanici = new DtoKullanici();
+            BeanUtils.copyProperties(favorileme.getKullanici(), dtoKullanici);
+            dtoFavorileme.setKullanici(dtoKullanici);
+
+            DtoArac dtoArac = new DtoArac();
+            BeanUtils.copyProperties(favorileme.getArac(), dtoArac);
+            dtoFavorileme.setArac(dtoArac);
+
+            dtoFavorilemes.add(dtoFavorileme);
+        }
+
+        return dtoFavorilemes;
     }
 }
