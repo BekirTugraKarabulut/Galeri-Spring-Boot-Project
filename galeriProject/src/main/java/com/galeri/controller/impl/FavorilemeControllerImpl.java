@@ -29,4 +29,10 @@ public class FavorilemeControllerImpl implements FavorilemeController {
         return favorilemeService.kullaniciFavoriListByUsername(username);
     }
 
+    @Override
+    @DeleteMapping(path = "/favorilemeSil/{favorilemeId}")
+    public boolean favorilemeSil(@PathVariable(name = "favorilemeId" , required = true) Long favorilemeId) {
+        return favorilemeService.favorilemeSil(favorilemeId);
+    }
+
 }

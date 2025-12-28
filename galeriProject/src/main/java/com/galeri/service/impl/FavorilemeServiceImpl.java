@@ -92,4 +92,17 @@ public class FavorilemeServiceImpl implements FavorilemeService {
 
         return dtoFavorilemes;
     }
+
+    @Override
+    public boolean favorilemeSil(Long favorilemeId) {
+
+        Optional<Favorileme> favorileme = favorilemeRepository.findByFavorilemeId(favorilemeId);
+
+        if(favorileme.isPresent()){
+            favorilemeRepository.deleteById(favorilemeId);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

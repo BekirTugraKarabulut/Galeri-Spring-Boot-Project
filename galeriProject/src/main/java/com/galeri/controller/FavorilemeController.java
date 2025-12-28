@@ -11,4 +11,6 @@ public interface FavorilemeController {
 
     List<DtoFavorileme> kullaniciFavoriListByUsername(String username);
 
+    public boolean favorilemeSil(Long favorilemeId);
+
 }
