@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DtoArac {
+public class DtoMarkaAraba {
 
     private Long aracId;
 
@@ -20,7 +20,5 @@ public class DtoArac {
     private String fiyat;
 
     private String aracResmi;
-
-    private DtoGalerici galerici;
 
 }
