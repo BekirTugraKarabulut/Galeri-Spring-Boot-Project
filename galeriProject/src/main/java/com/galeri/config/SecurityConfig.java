@@ -54,6 +54,7 @@ public class SecurityConfig{
                             "/uploads/**",
                             "/araclar",
                             "/arac-ekle",
+                            "/arac-sil/{aracId}",
                             "/kullanici/get/{username}",
                             "/v3/api-docs/**",
                             "/swagger-ui/**",

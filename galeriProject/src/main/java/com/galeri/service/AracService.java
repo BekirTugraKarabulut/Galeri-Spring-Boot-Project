@@ -10,4 +10,7 @@ public interface AracService {
     public List<DtoArac> getAllArac();
 
     public DtoArac aracEkle(DtoAracUI dtoAracUI);
+
+    public boolean aracSil(Long aracId);
+
 }

@@ -35,4 +35,10 @@ public class RandevuControllerImpl implements RandevuController {
         return randevuService.getRandevularByUsername(username);
     }
 
+    @Override
+    @DeleteMapping(path = "/randevuSil/{randevuId}")
+    public boolean randevuSil(@PathVariable(name = "randevuId" , required = true) Long randevuId) {
+        return randevuService.randevuSil(randevuId);
+    }
+
 }

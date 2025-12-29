@@ -13,4 +13,6 @@ public interface RandevuController {
 
     public List<DtoRandevu> getRandevularByUsername(String username);
 
+    public boolean randevuSil(Long randevuId);
+
 }

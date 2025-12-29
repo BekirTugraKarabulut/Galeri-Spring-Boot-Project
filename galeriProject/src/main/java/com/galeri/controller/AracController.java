@@ -11,4 +11,6 @@ public interface AracController {
 
     public DtoArac aracEkle(DtoAracUI dtoAracUI);
 
+    public boolean aracSil(Long aracId);
+
 }

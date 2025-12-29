@@ -67,4 +67,18 @@ public class AracServiceImpl implements AracService {
         return dtoArac;
 
     }
+
+    @Override
+    public boolean aracSil(Long aracId) {
+
+        Optional<Arac> arac = aracRepository.findByAracId(aracId);
+
+        if(arac.isPresent()){
+            aracRepository.delete(arac.get());
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }

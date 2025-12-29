@@ -5,10 +5,7 @@ import com.galeri.dto.DtoArac;
 import com.galeri.dto.DtoAracUI;
 import com.galeri.service.AracService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +25,12 @@ public class AracControllerImpl implements AracController {
     @PostMapping(path = "/arac-ekle")
     public DtoArac aracEkle(@RequestBody DtoAracUI dtoAracUI) {
         return aracService.aracEkle(dtoAracUI);
+    }
+
+    @Override
+    @DeleteMapping(path = "/arac-sil/{aracId}")
+    public boolean aracSil(@PathVariable(name = "aracId" , required = true) Long aracId) {
+        return aracService.aracSil(aracId);
     }
 
 }

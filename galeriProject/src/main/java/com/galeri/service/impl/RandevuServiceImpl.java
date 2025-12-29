@@ -119,4 +119,17 @@ public class RandevuServiceImpl implements RandevuService {
         }
         return dtoRandevuList;
     }
+
+    @Override
+    public boolean randevuSil(Long randevuId) {
+
+        Optional<Randevu> randevu = randevuRepository.findByRandevuId(randevuId);
+
+        if(randevu.isPresent()){
+            randevuRepository.delete(randevu.get());
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
