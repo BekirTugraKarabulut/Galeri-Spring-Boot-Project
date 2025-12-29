@@ -14,4 +14,6 @@ public interface AracRepository extends JpaRepository<Arac, Long> {
 
     List<Arac> findByMarka(String marka);
 
+    List<Arac> findByModel(String model);
+
 }

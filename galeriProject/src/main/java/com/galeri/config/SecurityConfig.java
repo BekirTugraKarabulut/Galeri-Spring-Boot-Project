@@ -45,6 +45,7 @@ public class SecurityConfig{
                             GALERICI_REGISTER,
                             GALERICI_REFRESH_TOKEN,
                             "/marka/**",
+                            "/model/**",
                             "/favorileme/**",
                             "/kullanici/update/{username}",
                             "/randevu/**",
