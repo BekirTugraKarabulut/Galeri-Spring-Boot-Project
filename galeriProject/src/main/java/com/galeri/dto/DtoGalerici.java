@@ -1,5 +1,6 @@
 package com.galeri.dto;
 
+import com.galeri.model.Rol;
 import com.galeri.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class DtoGalerici {
 
     private String password;
 
+    private Integer rolId;
 }

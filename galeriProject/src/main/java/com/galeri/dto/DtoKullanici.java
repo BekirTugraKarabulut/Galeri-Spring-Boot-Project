@@ -22,4 +22,6 @@ public class DtoKullanici {
 
     private Role role;
 
+    private Integer roleId;
+
 }

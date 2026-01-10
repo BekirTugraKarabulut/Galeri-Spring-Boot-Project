@@ -47,8 +47,7 @@ public class Kullanici implements UserDetails {
     @OneToMany(mappedBy = "kullanici", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Randevu> randevus;
 
-    @OneToOne
-    @JoinColumn(name = "rol_id", referencedColumnName = "rol_id")
+    @ManyToOne
     private Rol rol;
 
     @Override

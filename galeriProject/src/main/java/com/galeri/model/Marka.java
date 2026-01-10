@@ -24,4 +24,7 @@ public class Marka {
     @OneToMany(mappedBy = "marka" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
     private List<Model> modelList;
 
+    @OneToMany(mappedBy = "markas" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private List<Arac> aracList;
+
 }

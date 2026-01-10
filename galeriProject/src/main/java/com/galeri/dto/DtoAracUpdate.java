@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DtoAracUI {
-
-    private Long aracId;
+public class DtoAracUpdate {
 
     private String marka;
 
@@ -19,7 +17,4 @@ public class DtoAracUI {
 
     private String fiyat;
 
-    private String aracResmi;
-
-    private DtoGalerici galerici;
 }

@@ -8,9 +8,11 @@ import com.galeri.jwt.GalericiAuthRequest;
 import com.galeri.jwt.JwtService;
 import com.galeri.model.Galerici;
 import com.galeri.model.RefreshTokenGalerici;
+import com.galeri.model.Rol;
 import com.galeri.model.Role;
 import com.galeri.repository.GalericiRepository;
 import com.galeri.repository.RefreshTokenGalericiRepository;
+import com.galeri.repository.RolRepository;
 import com.galeri.service.GalericiAuthService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class GalericiAuthServiceImpl implements GalericiAuthService {
 
     @Autowired
     private GalericiRepository galericiRepository;
+
+    @Autowired
+    private RolRepository rolRepository;
 
     @Autowired
     private RefreshTokenGalericiRepository refreshTokenGalericiRepository;
@@ -48,8 +53,15 @@ public class GalericiAuthServiceImpl implements GalericiAuthService {
         galerici.setGalericiId(dtoGalericiUI.getGalericiId());
         galerici.setName(dtoGalericiUI.getName());
         galerici.setPassword(bCryptPasswordEncoder.encode(dtoGalericiUI.getPassword()));
-        galerici.setRole(Role.GALERICI);
 
+        Optional<Rol> rol = rolRepository.findByRolId(2);
+        if(rol.isPresent()){
+            galerici.setRol(rol.get());
+        }else{
+            throw new RuntimeException("Rol bulunamadi");
+        }
+
+        galerici.setRole(Role.GALERICI);
         Galerici dbGalerici = galericiRepository.save(galerici);
         DtoGalerici dtoGalerici = new DtoGalerici();
         BeanUtils.copyProperties(dbGalerici, dtoGalerici);

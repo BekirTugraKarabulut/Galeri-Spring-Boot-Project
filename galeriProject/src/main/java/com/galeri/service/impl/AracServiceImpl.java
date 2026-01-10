@@ -2,6 +2,7 @@ package com.galeri.service.impl;
 
 import com.galeri.dto.DtoArac;
 import com.galeri.dto.DtoAracUI;
+import com.galeri.dto.DtoAracUpdate;
 import com.galeri.dto.DtoGalerici;
 import com.galeri.model.Arac;
 import com.galeri.model.Galerici;
@@ -81,4 +82,51 @@ public class AracServiceImpl implements AracService {
         }
 
     }
+
+    @Override
+    public DtoArac aracbyAracId(Long aracId) {
+
+        Optional<Arac> arac = aracRepository.findByAracId(aracId);
+
+        if(arac.isPresent()){
+            DtoArac dtoArac = new DtoArac();
+            BeanUtils.copyProperties(arac.get(),dtoArac);
+
+            DtoGalerici dtoGalerici = new DtoGalerici();
+            BeanUtils.copyProperties(arac.get().getGalerici(),dtoGalerici);
+            dtoArac.setGalerici(dtoGalerici);
+
+            return dtoArac;
+        }else{
+            return null;
+        }
+
+    }
+
+    @Override
+    public DtoArac updateAracByAracId(Long aracId, DtoAracUpdate dtoAracUpdate) {
+
+        Optional<Arac> arac = aracRepository.findByAracId(aracId);
+
+        if(arac.isPresent()){
+            arac.get().setMarka(dtoAracUpdate.getMarka());
+            arac.get().setModel(dtoAracUpdate.getModel());
+            arac.get().setFiyat(dtoAracUpdate.getFiyat());
+            arac.get().setYil(dtoAracUpdate.getYil());
+            Arac dbArac = aracRepository.save(arac.get());
+            DtoArac dtoArac = new DtoArac();
+            BeanUtils.copyProperties(dbArac,dtoArac);
+
+            DtoGalerici dtoGalerici = new DtoGalerici();
+            BeanUtils.copyProperties(dbArac.getGalerici(),dtoGalerici);
+            dtoArac.setGalerici(dtoGalerici);
+
+            return dtoArac;
+        }else{
+            return null;
+        }
+
+    }
+
+
 }

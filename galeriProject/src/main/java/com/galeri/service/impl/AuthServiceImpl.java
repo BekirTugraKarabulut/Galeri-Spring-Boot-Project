@@ -8,9 +8,11 @@ import com.galeri.jwt.AuthResponse;
 import com.galeri.jwt.JwtService;
 import com.galeri.model.Kullanici;
 import com.galeri.model.RefreshToken;
+import com.galeri.model.Rol;
 import com.galeri.model.Role;
 import com.galeri.repository.AuthRepository;
 import com.galeri.repository.RefreshTokenRepository;
+import com.galeri.repository.RolRepository;
 import com.galeri.service.AuthService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private AuthRepository authRepository;
+
+    @Autowired
+    private RolRepository rolRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -49,6 +54,15 @@ public class AuthServiceImpl implements AuthService {
         kullanici.setIsim(dtoKullaniciUI.getIsim());
         kullanici.setSoyisim(dtoKullaniciUI.getSoyisim());
         kullanici.setTelefonNo(dtoKullaniciUI.getTelefonNo());
+
+        Optional<Rol> rol = rolRepository.findByRolId(1);
+
+        if(rol.isPresent()) {
+            kullanici.setRol(rol.get());
+        }else{
+            return null;
+        }
+
         kullanici.setRole(Role.KULLANICI);
         kullanici.setPassword(bCryptPasswordEncoder.encode(dtoKullaniciUI.getPassword()));
 

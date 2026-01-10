@@ -25,4 +25,5 @@ public class DtoKullaniciUI {
     private String telefonNo;
 
     private Role role;
+
 }

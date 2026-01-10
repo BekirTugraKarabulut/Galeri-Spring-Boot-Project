@@ -41,4 +41,7 @@ public class Arac {
     @OneToMany(mappedBy = "arac", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Favorileme> favorilemes;
 
+    @ManyToOne
+    private Marka markas;
+
 }

@@ -32,6 +32,9 @@ public class Galerici implements UserDetails {
     @Column(name = "role")
     private Role role;
 
+    @OneToOne
+    private Rol rol;
+
     @OneToMany(mappedBy = "galerici", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Arac> aracs;
 

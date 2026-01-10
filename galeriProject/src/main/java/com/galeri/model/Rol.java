@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "rol")
 @Data
@@ -13,14 +15,20 @@ import lombok.NoArgsConstructor;
 public class Rol {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
     @Column(name = "rol_id")
-    private Long rolId;
+    private Integer rolId;
 
     @Column(name = "rol")
     private String rol;
 
-    @OneToOne(mappedBy = "rol" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Kullanici kullanici;
+    @OneToMany(mappedBy = "rol" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Kullanici> kullanici;
 
+    @OneToOne(mappedBy = "rol" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Galerici galerici;
 
 }
